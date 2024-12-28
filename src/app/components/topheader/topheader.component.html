@@ -6,8 +6,8 @@
             <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'de'}" (click)="switchLanguage('de')">{{ 'DE' | translate }}</button>
             <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'en'}" (click)="switchLanguage('en')">{{ 'EN' | translate }}</button>
         </div>
-        <div class="navigation navbar navbar-expand-lg py-lg-3 py-1 px-0">
-            <img alt="FOD Justitie Logo" class="d-none d-xl-block w-auto" loading="lazy" src="../../../assets/justicelogo_fgov.svg">
+        <div class="navigation navbar navbar-expand-lg py-lg-3 py-1 px-0 border-bottom">
+            <img alt="FOD Justitie Logo" class="d-none d-xl-block w-auto" loading="lazy" src="../../../assets/images/{{currentLang}}/justicelogo_fgov.svg">
         </div>
     </div>
 </header>
