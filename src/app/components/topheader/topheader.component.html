@@ -1,9 +1,16 @@
-<div class="app-container">
-    <div class="language-tabs">
-        <button (click)="switchLanguage('nl')">{{ 'NL' | translate  }}</button>
-        <button (click)="switchLanguage('fr')">{{ 'FR' | translate  }}</button>
-        <button (click)="switchLanguage('de')">{{ 'DE' | translate  }}</button>
-        <button (click)="switchLanguage('en')">{{ 'EN' | translate  }}</button>
+<header>
+    <div class="d-flex flex-column container-lg pt-2 text-end">
+        <div class="language-tabs" class="border-bottom">
+            <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'nl'}" (click)="switchLanguage('nl')">{{ 'NL' | translate }}</button>
+            <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'fr'}" (click)="switchLanguage('fr')">{{ 'FR' | translate }}</button>
+            <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'de'}" (click)="switchLanguage('de')">{{ 'DE' | translate }}</button>
+            <button type="button" class="btn body-small-text ms-2" [ngClass]="{'btn-primary' : currentLang === 'en'}" (click)="switchLanguage('en')">{{ 'EN' | translate }}</button>
+        </div>
+        <div class="navigation navbar navbar-expand-lg py-lg-3 py-1 px-0">
+            <img alt="FOD Justitie Logo" class="d-none d-xl-block w-auto" loading="lazy" src="../../../assets/justicelogo_fgov.svg">
+        </div>
     </div>
-</div>
+</header>
+
+
 

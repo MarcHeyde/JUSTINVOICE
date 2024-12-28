@@ -17,7 +17,11 @@ import { TranslateModule } from '@ngx-translate/core';
 export class TopHeaderComponent {
     constructor(private translate: TranslateService) {
         this.translate.setDefaultLang('nl')
-        translate.use('nl');
+        this.translate.use('nl');
+    }
+
+    get currentLang(): string {
+        return this.translate.currentLang;
     }
 
     switchLanguage(lang: string) {
