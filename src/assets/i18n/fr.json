@@ -2,5 +2,9 @@
     "NL" : "NL",
     "FR" : "FR",
     "DE" : "DE",
-    "EN" : "EN"
+    "EN" : "EN",
+
+    "FILES" : "Dossiers",
+    "NEWFILES" : "Noveaux fichiers",
+    "MYTASKS" : "Mes devoirs"
 }
