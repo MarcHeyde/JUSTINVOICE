@@ -9,20 +9,17 @@
 }
 
 .tab {
-    cursor: pointer;  /* Make the text clickable */
-    font-size: 14px;  /* Adjust font size */
-    padding: 10px 15px;  /* Padding around the text */
-    margin-right: 20px;  /* Space between tabs */
-    transition: color 0.3s, border-bottom 0.3s;  /* Smooth transition for color and underline */
-    padding-left: 0;
-    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px 15px;
+    margin-right: 20px;
   }
 
   .tab:hover {
-    color: #007bff;  /* Change color on hover */
+    color: #007bff;
   }
 
   .tab.active {
-    color: #007bff;  /* Change color for the active tab */
-    border-bottom: 2px solid #007bff;  /* Underline the active tab */
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
   }
