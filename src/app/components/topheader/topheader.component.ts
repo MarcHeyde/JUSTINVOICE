@@ -17,17 +17,36 @@ import { Router}                        from '@angular/router'
     ]
   })
 export class TopHeaderComponent {
+    currentTab: string = 'FILES';
+
+    supportedLanguages: string[] = ['nl', 'fr', 'de', 'en'];
+    tabs = [
+        { key: 'FILES', translationKey: 'FILES' },
+        { key: 'NEWFILES', translationKey: 'NEWFILES' },
+        { key: 'MYTASKS', translationKey: 'MYTASKS' }
+    ]
+
     currentLanguage: string = 'nl';
-    @Input() currentTab: string = 'dossiers';  // Default tab
+
 
     constructor(private translate: TranslateService, private sharedService: SharedService, private router: Router) {
-        this.translate.setDefaultLang(this.currentLanguage)
-        this.translate.use(this.currentLanguage);
-        this.sharedService.updateLanguage(this.currentLanguage);
+        this.setInitialLanguage();
     }
 
     get currentLang(): string {
         return this.translate.currentLang;
+    }
+
+    private setInitialLanguage() {
+        const defaultLang = this.translate.getBrowserLang != undefined
+            ? this.supportedLanguages.includes(this.translate.getBrowserLang()!)
+                ? this.translate.getBrowserLang()
+                : 'nl'
+            : 'nl'
+
+        this.translate.setDefaultLang(defaultLang!);
+        this.translate.use(defaultLang!);
+        this.sharedService.updateLanguage(defaultLang!);
     }
 
     switchLanguage(lang: string) {
@@ -35,16 +54,8 @@ export class TopHeaderComponent {
         this.sharedService.updateLanguage(lang);
     }
 
-    switchFile(tab: string, newFile : boolean = false){
-        this.currentTab = tab;
-        if (!newFile)
-            this.router.navigate([`/${tab}`]);
-        else
-            this.router.navigate([`/${tab}/`]);
-
-    }
-
-    navigateTo(page: string){
-
+    switchTab(tabKey: string){
+        this.currentTab = tabKey;
+        this.router.navigate([`/${tabKey.toLowerCase()}`]);
     }
 }
