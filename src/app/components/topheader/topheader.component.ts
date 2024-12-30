@@ -1,10 +1,10 @@
-import { Component }            from '@angular/core';
-import { TranslateService }     from '@ngx-translate/core';
-import { CommonModule }         from '@angular/common';
+import { Component, Input }             from '@angular/core';
+import { TranslateService }             from '@ngx-translate/core';
+import { CommonModule }                 from '@angular/common';
 
-import { TranslateModule }      from '@ngx-translate/core';
-
-import { SharedService }        from '../../services/shared.service';
+import { TranslateModule }              from '@ngx-translate/core';
+import { SharedService }                from '../../services/shared.service';
+import { Router}                        from '@angular/router'
 
 @Component({
     selector: 'app-topheader',
@@ -17,12 +17,13 @@ import { SharedService }        from '../../services/shared.service';
     ]
   })
 export class TopHeaderComponent {
-    currentTab: string = 'dossiers';  // Default tab
+    currentLanguage: string = 'nl';
+    @Input() currentTab: string = 'dossiers';  // Default tab
 
-    constructor(private translate: TranslateService, private sharedService: SharedService) {
-        this.translate.setDefaultLang('nl')
-        this.translate.use('nl');
-        this.sharedService.updateLanguage('nl');
+    constructor(private translate: TranslateService, private sharedService: SharedService, private router: Router) {
+        this.translate.setDefaultLang(this.currentLanguage)
+        this.translate.use(this.currentLanguage);
+        this.sharedService.updateLanguage(this.currentLanguage);
     }
 
     get currentLang(): string {
@@ -31,10 +32,19 @@ export class TopHeaderComponent {
 
     switchLanguage(lang: string) {
         this.translate.use(lang);
-        this.sharedService.updateLanguage('nl');
+        this.sharedService.updateLanguage(lang);
     }
 
-    switchFile(tab: string){
+    switchFile(tab: string, newFile : boolean = false){
         this.currentTab = tab;
+        if (!newFile)
+            this.router.navigate([`/${tab}`]);
+        else
+            this.router.navigate([`/${tab}/`]);
+
+    }
+
+    navigateTo(page: string){
+
     }
 }
